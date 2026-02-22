@@ -64,6 +64,10 @@ RUN sed -i 's/\r$//' /entrypoint.sh.tmp && \
     chmod +x manage.py && \
     mkdir -p /app/config /app/output
 
+# 复制配置文件
+COPY config/config.yaml /app/config/
+COPY config/frequency_words.txt /app/config/
+
 ENV PYTHONUNBUFFERED=1 \
     CONFIG_PATH=/app/config/config.yaml \
     FREQUENCY_WORDS_PATH=/app/config/frequency_words.txt
